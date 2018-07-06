@@ -29,6 +29,5 @@ module.exports = (robot) ->
         if res.statusCode is 204
             msg.send "User #{user} unsuspended in GitHub Enterprise :jazzhands:"
         else
-          msg.send "#{host}/api/v3/users/#{user}/suspended?access_token=#{token}"
-          error = new Error("Unsuspend failed with #{res.statusCode} status code")
+          error = new Error("Unsuspend of #{user} failed with #{res.statusCode} status code")
           robot.emit 'error', error, msg
