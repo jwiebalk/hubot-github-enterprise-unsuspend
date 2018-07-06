@@ -18,11 +18,20 @@ Then add **hubot-github-enterprise-unsuspend** to your `external-scripts.json`:
 ]
 ```
 
+## Configuration
+
+Two variables will need to be configured to set the hostname and the site admin token for Hubot to use:
+
+```
+export GHE_URL='https://<hostname>'
+export GHE_TOKEN='<Site admin token>'
+```
+
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> gheunsuspend <user>
+hubot>> User <user> unsuspended in GitHub Enterprise :jazzhands:
 ```
 
 ## NPM Module

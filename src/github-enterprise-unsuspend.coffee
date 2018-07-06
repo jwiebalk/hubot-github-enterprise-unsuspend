@@ -2,8 +2,8 @@
 #   Unsuspend users in GitHub Enterprise via Hubot
 #
 # Configuration:
-#   host = process.env.GHE_URL
-#   token = process.env.GHE_TOKEN
+#   export GHE_URL='https://<hostname>'
+#   export GHE_TOKEN='<Site admin token>'
 #
 # Commands:
 #   hubot gheunsuspend <user> -- Unsuspends user specified in GitHub Enterprise
@@ -14,8 +14,8 @@
 # Author:
 #   John Wiebalk <jwiebalk@github.com>
 
-host = process.env.GHE_URL || '<default>'
-token = process.env.GHE_TOKEN || '<default>'
+host = process.env.GHE_URL
+token = process.env.GHE_TOKEN
 
 module.exports = (robot) ->
   robot.respond /gheunsuspend (.*)/i, slackEnabled: true, (msg) ->
@@ -27,7 +27,7 @@ module.exports = (robot) ->
           return
 
         if res.statusCode is 204
-            msg.send "User unsuspended in GitHub Enterprise :jazzhands:"
+            msg.send "User #{user} unsuspended in GitHub Enterprise :jazzhands:"
         else
           msg.send "#{host}/api/v3/users/#{user}/suspended?access_token=#{token}"
           error = new Error("Unsuspend failed with #{res.statusCode} status code")
