@@ -2,7 +2,7 @@
 // #   Unsuspend users in GitHub Enterprise via Hubot
 // #
 // # Configuration:
-// #   export GHE_URL='https://<hostname>'
+// #   export GHE_HOST='<hostname>'
 // #   export GHE_PRIVATE_KEY=`cat /path/to/private_key/id_rsa`
 // #
 // # Commands:
@@ -16,7 +16,7 @@
 
 var SSH = require("simple-ssh");
 
-host = process.env.GHE_URL
+host = process.env.GHE_HOST
 key = process.env.GHE_PRIVATE_KEY
 module.exports = function(robot) {
   robot.respond(/gheunsuspend (.*)/i, function(msg) {
