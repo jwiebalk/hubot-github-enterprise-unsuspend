@@ -47,7 +47,7 @@ module.exports = function(robot) {
               msg.reply("User " + user + " unsuspended in GitHub Enterprise :jazzhands:");
             },
             err: function(stderr) {
-              msg.reply("Unsuspend of " + user + "failed with error " + stderr)
+              msg.reply("Failed with error " + stderr)
               ssh.end();
           }
       }).start();
